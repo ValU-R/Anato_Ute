@@ -98,21 +98,3 @@
       if (correctAnswers === 5) {
         document.getElementById('nextLevel').style.display = 'inline-block';
       }
-    }
-  </script>
-</body>
-</html>
-
-  <script>
-    function checkAnswer(button, isCorrect) {
-      if (isCorrect) {
-        button.classList.add('correct');
-      } else {
-        button.classList.add('incorrect');
-      }
-      const buttons = button.parentElement.querySelectorAll('button');
-      buttons.forEach(btn => btn.disabled = true);
-    }
-  </script>
-</body>
-</html>
