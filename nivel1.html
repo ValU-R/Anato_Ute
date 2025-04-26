@@ -78,7 +78,31 @@
     <button onclick="checkAnswer(this, false)">Retroversión</button>
     <button onclick="checkAnswer(this, false)">Extrofia</button>
   </div>
-<a href="nivel2.html"><button class="next-button">Siguiente Nivel</button></a>
+
+  <a id="nextLevel" href="../Nivel2/index.html">
+    <button>Siguiente Nivel</button>
+  </a>
+
+  <script>
+    let correctAnswers = 0;
+    function checkAnswer(button, isCorrect) {
+      if (isCorrect) {
+        button.classList.add('correct');
+        correctAnswers++;
+      } else {
+        button.classList.add('incorrect');
+      }
+      const buttons = button.parentElement.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+
+      if (correctAnswers === 5) {
+        document.getElementById('nextLevel').style.display = 'inline-block';
+      }
+    }
+  </script>
+</body>
+</html>
+
   <script>
     function checkAnswer(button, isCorrect) {
       if (isCorrect) {
