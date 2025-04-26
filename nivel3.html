@@ -111,18 +111,29 @@
       <button onclick="checkAnswer(this, false)">Hepatitis B</button>
     </div>
   </div>
-  <a href="nivel4.html"><button class="next-button">Siguiente Nivel</button></a>
-  
+   <a id="nextLevel" href="../Nivel4/index.html">
+    <button>Siguiente Nivel</button>
+  </a>
+
   <script>
+    let correctAnswers = 0;
     function checkAnswer(button, isCorrect) {
       if (isCorrect) {
         button.classList.add('correct');
+        correctAnswers++;
       } else {
         button.classList.add('incorrect');
       }
       const buttons = button.parentElement.querySelectorAll('button');
       buttons.forEach(btn => btn.disabled = true);
+
+      if (correctAnswers === 7) {
+        document.getElementById('nextLevel').style.display = 'inline-block';
+      }
     }
   </script>
+</body>
+</html>
+
 </body>
 </html>
