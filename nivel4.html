@@ -101,17 +101,26 @@
     <button onclick="checkAnswer(this, false)">Ecografía pélvica</button>
   </div>
 
-  <a href="index.html"><button class="menu-button">Volver al Menú Principal</button></a>
+   <a id="menuButton" href="../Nivel1/index.html">
+    <button>Regresar al Menú Principal</button>
+  </a>
 
   <script>
+    let correctAnswers = 0;
+    const totalQuestions = 7;
     function checkAnswer(button, isCorrect) {
       if (isCorrect) {
         button.classList.add('correct');
+        correctAnswers++;
       } else {
         button.classList.add('incorrect');
       }
       const buttons = button.parentElement.querySelectorAll('button');
       buttons.forEach(btn => btn.disabled = true);
+
+      if (correctAnswers === totalQuestions) {
+        document.getElementById('menuButton').style.display = 'inline-block';
+      }
     }
   </script>
 </body>
