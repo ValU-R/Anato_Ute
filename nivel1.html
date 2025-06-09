@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nivel 1 - Anatomía del Útero</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nivel 1 - Anatomía Básica del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,88 +13,100 @@
     }
     .question {
       background-color: #ffffff;
-      border: 2px solid #a5d6a7;
+      border: 2px solid #81c784;
       border-radius: 10px;
       margin: 20px auto;
       padding: 20px;
-      max-width: 700px;
+      max-width: 600px;
     }
     button {
-      margin: 10px;
+      margin: 5px;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #c8e6c9;
+      background-color: #a5d6a7;
       cursor: pointer;
     }
     button:hover {
-      background-color: #81c784;
+      background-color: #66bb6a;
     }
     .correct {
-      background-color: #66bb6a !important;
+      background-color: #4caf50 !important;
       color: white;
     }
     .incorrect {
       background-color: #ef5350 !important;
       color: white;
     }
+    #next-level {
+      display: none;
+      margin-top: 20px;
+      background-color: #388e3c;
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <h1>Nivel 1 - Anatomía del Útero</h1>
-  <p>Selecciona la respuesta correcta sobre la anatomía del útero.</p>
+  <h1>Nivel 1: Anatomía Básica del Útero</h1>
+  <p>Selecciona la respuesta correcta para cada pregunta:</p>
 
   <div class="question">
-    <p><strong>1. ¿Cuál es la función principal del útero?</strong></p>
-    <button onclick="checkAnswer(this, true)">Alojar y nutrir al embrión durante el embarazo</button>
-    <button onclick="checkAnswer(this, false)">Producir óvulos</button>
-    <button onclick="checkAnswer(this, false)">Regular el ciclo urinario</button>
-  </div>
-
-  <div class="question">
-    <p><strong>2. ¿Qué parte del útero se conecta con la vagina?</strong></p>
+    <p>1. ¿Qué parte del útero conecta con la vagina?</p>
     <button onclick="checkAnswer(this, false)">Endometrio</button>
-    <button onclick="checkAnswer(this, false)">Fondo uterino</button>
-    <button onclick="checkAnswer(this, true)">Cérvix o cuello uterino</button>
+    <button onclick="checkAnswer(this, true)">Cervix</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
   </div>
 
   <div class="question">
-    <p><strong>3. ¿Cuál es la capa más interna del útero?</strong></p>
+    <p>2. ¿Cómo se llama la capa más interna del útero?</p>
+    <button onclick="checkAnswer(this, false)">Perimetrio</button>
     <button onclick="checkAnswer(this, true)">Endometrio</button>
     <button onclick="checkAnswer(this, false)">Miometrio</button>
-    <button onclick="checkAnswer(this, false)">Perimetrio</button>
   </div>
 
   <div class="question">
-    <p><strong>4. ¿Cómo se llama la capa muscular del útero?</strong></p>
-    <button onclick="checkAnswer(this, false)">Endometrio</button>
-    <button onclick="checkAnswer(this, true)">Miometrio</button>
+    <p>3. ¿Qué estructura conecta el útero con los ovarios?</p>
+    <button onclick="checkAnswer(this, true)">Trompas de Falopio</button>
+    <button onclick="checkAnswer(this, false)">Ligamento ancho</button>
     <button onclick="checkAnswer(this, false)">Cérvix</button>
   </div>
 
   <div class="question">
-    <p><strong>5. ¿Cuál es la posición más común del útero en el cuerpo?</strong></p>
-    <button onclick="checkAnswer(this, true)">Anteversoflexión</button>
-    <button onclick="checkAnswer(this, false)">Retroversión</button>
-    <button onclick="checkAnswer(this, false)">Extrofia</button>
+    <p>4. ¿Cuál es la capa muscular del útero?</p>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, true)">Miometrio</button>
+    <button onclick="checkAnswer(this, false)">Perimetrio</button>
   </div>
 
-  <a id="nextLevel" href="../Nivel2/index.html">
-    <button>Siguiente Nivel</button>
-  </a>
+  <div class="question">
+    <p>5. ¿Qué forma tiene el útero en una mujer adulta sana?</p>
+    <button onclick="checkAnswer(this, false)">Ovalada</button>
+    <button onclick="checkAnswer(this, false)">Redonda</button>
+    <button onclick="checkAnswer(this, true)">Pera</button>
+  </div>
+
+  <button id="next-level" onclick="window.location.href='nivel2.html'">Siguiente Nivel</button>
 
   <script>
-    let correctAnswers = 0;
+    let correctCount = 0;
+    const totalQuestions = 5;
+
     function checkAnswer(button, isCorrect) {
+      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
+      const buttons = button.parentElement.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+
       if (isCorrect) {
         button.classList.add('correct');
-        correctAnswers++;
+        correctCount++;
+        if (correctCount === totalQuestions) {
+          document.getElementById('next-level').style.display = 'inline-block';
+        }
       } else {
         button.classList.add('incorrect');
+        setTimeout(() => window.location.href = 'perdiste.html', 1000);
       }
-      const buttons = button.parentElement.querySelectorAll('button');
-      buttons.forEach(btn => btn.disabled = true);
-
-      if (correctAnswers === 5) {
-        document.getElementById('nextLevel').style.display = 'inline-block';
-      }
+    }
+  </script>
+</body>
+</html>
