@@ -43,15 +43,14 @@
       background-color: #d32f2f !important;
     }
     #nextLevelBtn {
+      display: none;
       margin-top: 30px;
       padding: 15px 30px;
       font-size: 1.1em;
-      background-color: #4527a0;
-      cursor: not-allowed;
-    }
-    #nextLevelBtn.enabled {
-      cursor: pointer;
       background-color: #673ab7;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
     }
     #abandonBtn {
       background-color: #d32f2f;
@@ -70,76 +69,5 @@
     <button onclick="checkAnswer(this, false)">Perimetrio</button>
   </div>
 
-  <div class="question">
-    <p><strong>2. ¿Qué hormona estimula el crecimiento del endometrio durante el ciclo menstrual?</strong></p>
-    <button onclick="checkAnswer(this, false)">Progesterona</button>
-    <button onclick="checkAnswer(this, true)">Estrógeno</button>
-    <button onclick="checkAnswer(this, false)">Testosterona</button>
-  </div>
+  <div class="question
 
-  <div class="question">
-    <p><strong>3. ¿Cómo se llama la fase del ciclo menstrual en la que el endometrio se desprende y se produce la menstruación?</strong></p>
-    <button onclick="checkAnswer(this, true)">Fase menstrual</button>
-    <button onclick="checkAnswer(this, false)">Fase proliferativa</button>
-    <button onclick="checkAnswer(this, false)">Fase secretora</button>
-  </div>
-
-  <div class="question">
-    <p><strong>4. ¿Cuál es la función principal del endometrio?</strong></p>
-    <button onclick="checkAnswer(this, true)">Proveer un ambiente adecuado para la implantación del embrión</button>
-    <button onclick="checkAnswer(this, false)">Producir óvulos</button>
-    <button onclick="checkAnswer(this, false)">Generar contracciones uterinas</button>
-  </div>
-
-  <div class="question">
-    <p><strong>5. ¿Qué estructura uterina se expande durante el embarazo para alojar al feto?</strong></p>
-    <button onclick="checkAnswer(this, true)">Cuerpo uterino</button>
-    <button onclick="checkAnswer(this, false)">Cuello uterino</button>
-    <button onclick="checkAnswer(this, false)">Endocérvix</button>
-  </div>
-
-  <button id="nextLevelBtn" disabled onclick="goNextLevel()">Siguiente Nivel</button>
-  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
-
-  <script>
-    let totalQuestions = 5;
-    let correctAnswers = 0;
-    let answeredQuestions = 0;
-
-    function checkAnswer(btn, isCorrect) {
-      if (btn.parentElement.getAttribute('answered')) return;
-      answeredQuestions++;
-      btn.parentElement.setAttribute('answered', 'true');
-
-      if (isCorrect) {
-        correctAnswers++;
-        btn.classList.add('correct');
-      } else {
-        btn.classList.add('incorrect');
-        setTimeout(() => {
-          window.location.href = 'final-intento.html';
-        }, 800);
-      }
-
-      const buttons = btn.parentElement.querySelectorAll('button');
-      buttons.forEach(b => b.disabled = true);
-
-      if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
-        const nextBtn = document.getElementById('nextLevelBtn');
-        nextBtn.disabled = false;
-        nextBtn.classList.add('enabled');
-      }
-    }
-
-    function goNextLevel() {
-      if (!document.getElementById('nextLevelBtn').disabled) {
-        window.location.href = 'nivel4.html';
-      }
-    }
-
-    function abandonGame() {
-      window.location.href = 'final-intento.html';
-    }
-  </script>
-</body>
-</html>
