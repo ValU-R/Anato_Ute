@@ -2,64 +2,52 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nivel 2 - Anatomía del Útero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nivel 2 - Anatomía Intermedia del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fce4ec;
+      background-color: #fff8e1;
       padding: 20px;
       text-align: center;
-      color: #880e4f;
-    }
-    h1 {
-      margin-bottom: 10px;
     }
     .question {
-      background-color: #f8bbd0;
+      background-color: #ffffff;
+      border: 2px solid #ffcc80;
       border-radius: 10px;
-      padding: 15px;
       margin: 20px auto;
-      max-width: 700px;
-      text-align: left;
+      padding: 20px;
+      max-width: 600px;
     }
     button {
-      margin: 8px 10px 8px 0;
+      margin: 5px;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #ec407a;
+      background-color: #ffe082;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ffb74d;
+    }
+    .correct {
+      background-color: #4caf50 !important;
       color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    button:hover:not(:disabled) {
-      background-color: #ad1457;
+    .incorrect {
+      background-color: #ef5350 !important;
+      color: white;
     }
-    button.correct {
-      background-color: #388e3c !important;
-    }
-    button.incorrect {
-      background-color: #d32f2f !important;
-    }
-    #nextLevelBtn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      background-color: #880e4f;
-      cursor: not-allowed;
-    }
-    #nextLevelBtn.enabled {
-      cursor: pointer;
-      background-color: #c2185b;
-    }
-    #abandonBtn {
-      background-color: #d32f2f;
+    #next-level {
+      display: none;
       margin-top: 20px;
+      background-color: #f57c00;
+      color: white;
     }
   </style>
 </head>
 <body>
+
   <h1>Nivel 2 - Anatomía del Útero</h1>
   <p>Contesta correctamente todas las preguntas para avanzar.</p>
 
