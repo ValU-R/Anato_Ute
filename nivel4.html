@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nivel 4 - Casos Clínicos del Útero</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nivel 4 - Casos Clínicos Anatómicos</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f3e5f5;
+      background-color: #fce4ec;
       padding: 20px;
       text-align: center;
     }
     .case {
       background-color: #ffffff;
-      border: 2px solid #ce93d8;
+      border: 2px solid #f48fb1;
       border-radius: 10px;
       margin: 20px auto;
       padding: 20px;
@@ -24,11 +24,11 @@
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #e1bee7;
+      background-color: #f8bbd0;
       cursor: pointer;
     }
     button:hover {
-      background-color: #ba68c8;
+      background-color: #f06292;
     }
     .correct {
       background-color: #66bb6a !important;
@@ -38,90 +38,52 @@
       background-color: #ef5350 !important;
       color: white;
     }
-    .menu-button {
-      background-color: #9575cd;
+    #finish-button {
+      display: none;
+      margin-top: 20px;
+      background-color: #c2185b;
       color: white;
-      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Nivel 4 - Casos Clínicos del Útero</h1>
-  <p>Lee cada caso y elige la respuesta más adecuada.</p>
+  <h1>Nivel 4 - Casos Clínicos con Enfoque Anatómico</h1>
+  <p>Lee cada caso y selecciona la mejor opción:</p>
 
   <div class="case">
-    <p><strong>Caso 1:</strong> Una paciente de 35 años presenta menstruaciones muy abundantes y dolorosas. En la ecografía se observan masas redondeadas en el útero.</p>
-    <p><strong>¿Cuál es el diagnóstico más probable?</strong></p>
-    <button onclick="checkAnswer(this, false)">Endometriosis</button>
-    <button onclick="checkAnswer(this, true)">Miomas uterinos</button>
-    <button onclick="checkAnswer(this, false)">Cáncer cervical</button>
+    <p><strong>Caso 1:</strong> Una paciente tiene una lesión en el fondo uterino. ¿Cuál es la capa más externa afectada?</p>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+    <button onclick="checkAnswer(this, true)">Perimetrio</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 2:</strong> Una mujer joven presenta dolor pélvico crónico y dificultad para quedar embarazada. En la laparoscopia se detecta tejido endometrial fuera del útero.</p>
-    <p><strong>¿Qué enfermedad presenta?</strong></p>
-    <button onclick="checkAnswer(this, false)">Pólipos endometriales</button>
-    <button onclick="checkAnswer(this, true)">Endometriosis</button>
-    <button onclick="checkAnswer(this, false)">Vaginitis</button>
+    <p><strong>Caso 2:</strong> Una malformación congénita impide la fusión de los conductos de Müller. ¿Qué tipo de útero se formará?</p>
+    <button onclick="checkAnswer(this, false)">Útero engrosado</button>
+    <button onclick="checkAnswer(this, true)">Útero bicorne</button>
+    <button onclick="checkAnswer(this, false)">Útero invertido</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 3:</strong> Una paciente acude a consulta por sangrado vaginal fuera del período menstrual. No tiene dolor, pero su última citología fue anormal.</p>
-    <p><strong>¿Qué sospecha diagnóstica es más probable?</strong></p>
-    <button onclick="checkAnswer(this, true)">Cáncer de cuello uterino</button>
-    <button onclick="checkAnswer(this, false)">Cistitis</button>
-    <button onclick="checkAnswer(this, false)">Infección renal</button>
+    <p><strong>Caso 3:</strong> Una paciente se somete a una histerectomía y se observa que los vasos uterinos están cruzando una estructura tubular. ¿Qué estructura es esa?</p>
+    <button onclick="checkAnswer(this, false)">Ovario</button>
+    <button onclick="checkAnswer(this, false)">Vena iliaca</button>
+    <button onclick="checkAnswer(this, true)">Uréter</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 4:</strong> ¿Cuál de estas opciones ayuda a prevenir el cáncer de cuello uterino?</p>
-    <button onclick="checkAnswer(this, true)">Vacunación contra el VPH</button>
-    <button onclick="checkAnswer(this, false)">Uso de analgésicos</button>
-    <button onclick="checkAnswer(this, false)">Evitar el ejercicio físico</button>
+    <p><strong>Caso 4:</strong> Durante una laparoscopia, se observan pliegues del ligamento ancho que rodean una trompa uterina. ¿Qué nombre recibe esa estructura?</p>
+    <button onclick="checkAnswer(this, true)">Mesosalpinx</button>
+    <button onclick="checkAnswer(this, false)">Mesometrio</button>
+    <button onclick="checkAnswer(this, false)">Mesovario</button>
   </div>
 
-  <div class="case">
-    <p><strong>Caso 5:</strong> Una mujer posmenopáusica presenta sangrado vaginal inesperado. ¿Cuál es la acción médica más adecuada?</p>
-    <button onclick="checkAnswer(this, false)">Esperar y observar</button>
-    <button onclick="checkAnswer(this, true)">Realizar una biopsia endometrial</button>
-    <button onclick="checkAnswer(this, false)">Dar tratamiento hormonal inmediato</button>
-  </div>
-
-  <div class="case">
-    <p><strong>Caso 6:</strong> Una mujer con diagnóstico de endometriosis pregunta por una posible consecuencia a largo plazo. ¿Cuál es una complicación conocida?</p>
-    <button onclick="checkAnswer(this, false)">Hipertensión</button>
-    <button onclick="checkAnswer(this, true)">Infertilidad</button>
-    <button onclick="checkAnswer(this, false)">Problemas digestivos</button>
-  </div>
-
-  <div class="case">
-    <p><strong>Caso 7:</strong> Una paciente con antecedentes de VPH persistente debe seguir un control frecuente. ¿Qué examen se recomienda para el seguimiento?</p>
-    <button onclick="checkAnswer(this, false)">Hemograma</button>
-    <button onclick="checkAnswer(this, true)">Colposcopia</button>
-    <button onclick="checkAnswer(this, false)">Ecografía pélvica</button>
-  </div>
-
-   <a id="menuButton" href="../Nivel1/index.html">
-    <button>Regresar al Menú Principal</button>
-  </a>
+  <button id="finish-button" onclick="window.location.href='felicitaciones.html'">Finalizar Juego</button>
 
   <script>
-    let correctAnswers = 0;
-    const totalQuestions = 7;
-    function checkAnswer(button, isCorrect) {
-      if (isCorrect) {
-        button.classList.add('correct');
-        correctAnswers++;
-      } else {
-        button.classList.add('incorrect');
-      }
-      const buttons = button.parentElement.querySelectorAll('button');
-      buttons.forEach(btn => btn.disabled = true);
+    let correctCount = 0;
+    const totalCases = 4;
 
-      if (correctAnswers === totalQuestions) {
-        document.getElementById('menuButton').style.display = 'inline-block';
-      }
-    }
-  </script>
-</body>
-</html>
+    function checkAnswer(button, isCorrect) {
+      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
+      const buttons = button.parentElement.querySelectorAll(
