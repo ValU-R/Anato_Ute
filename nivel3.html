@@ -2,110 +2,143 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nivel 3 - Anatomía Avanzada del Útero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nivel 3 - Fisiología del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #e3f2fd;
+      background-color: #ede7f6;
       padding: 20px;
       text-align: center;
+      color: #4527a0;
+    }
+    h1 {
+      margin-bottom: 10px;
     }
     .question {
-      background-color: #ffffff;
-      border: 2px solid #90caf9;
+      background-color: #d1c4e9;
       border-radius: 10px;
+      padding: 15px;
       margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
+      max-width: 700px;
+      text-align: left;
     }
     button {
-      margin: 5px;
+      margin: 8px 10px 8px 0;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #bbdefb;
+      background-color: #7e57c2;
+      color: white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #64b5f6;
+    button:hover:not(:disabled) {
+      background-color: #512da8;
     }
-    .correct {
-      background-color: #4caf50 !important;
-      color: white;
+    button.correct {
+      background-color: #388e3c !important;
     }
-    .incorrect {
-      background-color: #ef5350 !important;
-      color: white;
+    button.incorrect {
+      background-color: #d32f2f !important;
     }
-    #next-level {
-      display: none;
+    #nextLevelBtn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #4527a0;
+      cursor: not-allowed;
+    }
+    #nextLevelBtn.enabled {
+      cursor: pointer;
+      background-color: #673ab7;
+    }
+    #abandonBtn {
+      background-color: #d32f2f;
       margin-top: 20px;
-      background-color: #1976d2;
-      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Nivel 3: Anatomía Avanzada del Útero</h1>
-  <p>Selecciona la respuesta correcta para cada pregunta:</p>
+  <h1>Nivel 3 - Fisiología del Útero</h1>
+  <p>Contesta correctamente todas las preguntas para avanzar.</p>
 
   <div class="question">
-    <p>1. ¿Qué arteria irriga principalmente el útero?</p>
-    <button onclick="checkAnswer(this, true)">Arteria uterina</button>
-    <button onclick="checkAnswer(this, false)">Arteria ovárica</button>
-    <button onclick="checkAnswer(this, false)">Arteria mesentérica</button>
+    <p><strong>1. ¿Cuál es la capa muscular del útero responsable de las contracciones durante el parto?</strong></p>
+    <button onclick="checkAnswer(this, true)">Miometrio</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Perimetrio</button>
   </div>
 
   <div class="question">
-    <p>2. ¿Dónde se localiza el plexo venoso uterino?</p>
-    <button onclick="checkAnswer(this, true)">En los márgenes laterales del útero</button>
-    <button onclick="checkAnswer(this, false)">En el fondo uterino</button>
-    <button onclick="checkAnswer(this, false)">En el endometrio</button>
+    <p><strong>2. ¿Qué hormona estimula el crecimiento del endometrio durante el ciclo menstrual?</strong></p>
+    <button onclick="checkAnswer(this, false)">Progesterona</button>
+    <button onclick="checkAnswer(this, true)">Estrógeno</button>
+    <button onclick="checkAnswer(this, false)">Testosterona</button>
   </div>
 
   <div class="question">
-    <p>3. ¿Cuál es la función del miometrio?</p>
-    <button onclick="checkAnswer(this, true)">Proporcionar contracción muscular</button>
-    <button onclick="checkAnswer(this, false)">Nutrir el endometrio</button>
-    <button onclick="checkAnswer(this, false)">Proteger los ovarios</button>
+    <p><strong>3. ¿Cómo se llama la fase del ciclo menstrual en la que el endometrio se desprende y se produce la menstruación?</strong></p>
+    <button onclick="checkAnswer(this, true)">Fase menstrual</button>
+    <button onclick="checkAnswer(this, false)">Fase proliferativa</button>
+    <button onclick="checkAnswer(this, false)">Fase secretora</button>
   </div>
 
   <div class="question">
-    <p>4. ¿Qué tipo de tejido forma la capa endometrial?</p>
-    <button onclick="checkAnswer(this, true)">Epitelio columnar ciliado y estroma glandular</button>
-    <button onclick="checkAnswer(this, false)">Tejido óseo compacto</button>
-    <button onclick="checkAnswer(this, false)">Epitelio escamoso estratificado</button>
+    <p><strong>4. ¿Cuál es la función principal del endometrio?</strong></p>
+    <button onclick="checkAnswer(this, true)">Proveer un ambiente adecuado para la implantación del embrión</button>
+    <button onclick="checkAnswer(this, false)">Producir óvulos</button>
+    <button onclick="checkAnswer(this, false)">Generar contracciones uterinas</button>
   </div>
 
   <div class="question">
-    <p>5. ¿Qué ligamento contiene los vasos uterinos?</p>
-    <button onclick="checkAnswer(this, true)">Ligamento ancho</button>
-    <button onclick="checkAnswer(this, false)">Ligamento suspensorio del ovario</button>
-    <button onclick="checkAnswer(this, false)">Ligamento redondo</button>
+    <p><strong>5. ¿Qué estructura uterina se expande durante el embarazo para alojar al feto?</strong></p>
+    <button onclick="checkAnswer(this, true)">Cuerpo uterino</button>
+    <button onclick="checkAnswer(this, false)">Cuello uterino</button>
+    <button onclick="checkAnswer(this, false)">Endocérvix</button>
   </div>
 
-  <button id="next-level" onclick="window.location.href='nivel4.html'">Siguiente Nivel</button>
+  <button id="nextLevelBtn" disabled onclick="goNextLevel()">Siguiente Nivel</button>
+  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
 
   <script>
-    let correctCount = 0;
-    const totalQuestions = 5;
+    let totalQuestions = 5;
+    let correctAnswers = 0;
+    let answeredQuestions = 0;
 
-    function checkAnswer(button, isCorrect) {
-      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
-      const buttons = button.parentElement.querySelectorAll('button');
-      buttons.forEach(b => b.disabled = true);
+    function checkAnswer(btn, isCorrect) {
+      if (btn.parentElement.getAttribute('answered')) return;
+      answeredQuestions++;
+      btn.parentElement.setAttribute('answered', 'true');
 
       if (isCorrect) {
-        button.classList.add('correct');
-        correctCount++;
-        if (correctCount === totalQuestions) {
-          document.getElementById('next-level').style.display = 'inline-block';
-        }
+        correctAnswers++;
+        btn.classList.add('correct');
       } else {
-        button.classList.add('incorrect');
-        setTimeout(() => window.location.href = 'perdiste.html', 1000);
+        btn.classList.add('incorrect');
+        setTimeout(() => {
+          window.location.href = 'final-intento.html';
+        }, 800);
       }
+
+      const buttons = btn.parentElement.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+
+      if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
+        const nextBtn = document.getElementById('nextLevelBtn');
+        nextBtn.disabled = false;
+        nextBtn.classList.add('enabled');
+      }
+    }
+
+    function goNextLevel() {
+      if (!document.getElementById('nextLevelBtn').disabled) {
+        window.location.href = 'nivel4.html';
+      }
+    }
+
+    function abandonGame() {
+      window.location.href = 'final-intento.html';
     }
   </script>
 </body>
