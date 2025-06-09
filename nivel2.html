@@ -2,106 +2,115 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nivel 2 - Anatomía Intermedia del Útero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nivel 2 - Anatomía del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff8e1;
+      background-color: #fce4ec;
       padding: 20px;
       text-align: center;
+      color: #880e4f;
+    }
+    h1 {
+      margin-bottom: 10px;
     }
     .question {
-      background-color: #ffffff;
-      border: 2px solid #ffcc80;
+      background-color: #f8bbd0;
       border-radius: 10px;
+      padding: 15px;
       margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
+      max-width: 700px;
+      text-align: left;
     }
     button {
-      margin: 5px;
+      margin: 8px 10px 8px 0;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #ffe082;
+      background-color: #ec407a;
+      color: white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #ffb74d;
+    button:hover:not(:disabled) {
+      background-color: #ad1457;
     }
-    .correct {
-      background-color: #4caf50 !important;
-      color: white;
+    button.correct {
+      background-color: #388e3c !important;
     }
-    .incorrect {
-      background-color: #ef5350 !important;
-      color: white;
+    button.incorrect {
+      background-color: #d32f2f !important;
     }
-    #next-level {
-      display: none;
-      margin-top: 20px;
-padding: 15px 30px;
-      font-size: 16px;
-      background-color: #f57c00;
-      color: white;
- border-radius: 10px;
+    #nextLevelBtn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #880e4f;
+      cursor: not-allowed;
     }
     #nextLevelBtn.enabled {
-      display: inline-block;
+      cursor: pointer;
+      background-color: #c2185b;
+    }
+    #abandonBtn {
+      background-color: #d32f2f;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <h1>Nivel 2: Anatomía Intermedia del Útero</h1>
-  <p>Selecciona la respuesta correcta para cada pregunta:</p>
+  <h1>Nivel 2 - Anatomía del Útero</h1>
+  <p>Contesta correctamente todas las preguntas para avanzar.</p>
 
   <div class="question">
-    <p>1. ¿Qué ligamento sostiene el útero en posición dentro de la pelvis?</p>
-    <button onclick="checkAnswer(this, true)">Ligamento ancho</button>
-    <button onclick="checkAnswer(this, false)">Ligamento redondo</button>
-    <button onclick="checkAnswer(this, false)">Ligamento inguinal</button>
-  </div>
-
-  <div class="question">
-    <p>2. ¿Cuál es la relación anatómica del útero con respecto a la vejiga?</p>
-    <button onclick="checkAnswer(this, true)">Está posterior a la vejiga</button>
-    <button onclick="checkAnswer(this, false)">Está anterior a la vejiga</button>
-    <button onclick="checkAnswer(this, false)">Está superior a los riñones</button>
-  </div>
-
-  <div class="question">
-    <p>3. ¿En qué parte del útero se implanta normalmente el embrión?</p>
-    <button onclick="checkAnswer(this, false)">Cuello uterino</button>
-    <button onclick="checkAnswer(this, true)">Cuerpo uterino</button>
-    <button onclick="checkAnswer(this, false)">Istmo uterino</button>
-  </div>
-
-  <div class="question">
-    <p>4. ¿Cuál es la porción estrecha que une el cuerpo del útero con el cuello?</p>
-    <button onclick="checkAnswer(this, false)">Endometrio</button>
-    <button onclick="checkAnswer(this, false)">Fondo</button>
-    <button onclick="checkAnswer(this, true)">Istmo</button>
-  </div>
-
-  <div class="question">
-    <p>5. ¿Qué nombre recibe la parte superior del útero, opuesta al cérvix?</p>
-    <button onclick="checkAnswer(this, true)">Fondo uterino</button>
-    <button onclick="checkAnswer(this, false)">Cuello uterino</button>
+    <p><strong>1. ¿Cuál es la parte superior del útero que se encuentra por encima de la entrada de las trompas de Falopio?</strong></p>
+    <button onclick="checkAnswer(this, true)">Fondo del útero</button>
     <button onclick="checkAnswer(this, false)">Istmo</button>
+    <button onclick="checkAnswer(this, false)">Cérvix</button>
   </div>
 
-  <button id="next-level" onclick="window.location.href='nivel3.html'">Siguiente Nivel</button>
+  <div class="question">
+    <p><strong>2. ¿Qué estructura forma el canal por donde fluye la sangre menstrual y sale el bebé durante el parto?</strong></p>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, true)">Canal cervical</button>
+    <button onclick="checkAnswer(this, false)">Trompas de Falopio</button>
+  </div>
+
+  <div class="question">
+    <p><strong>3. ¿Qué parte del útero se conecta directamente con la vagina?</strong></p>
+    <button onclick="checkAnswer(this, false)">Fondo</button>
+    <button onclick="checkAnswer(this, false)">Cuerpo uterino</button>
+    <button onclick="checkAnswer(this, true)">Cérvix</button>
+  </div>
+
+  <div class="question">
+    <p><strong>4. ¿Qué nombre recibe la parte angosta del útero situada entre el cuerpo y el cuello uterino?</strong></p>
+    <button onclick="checkAnswer(this, true)">Istmo</button>
+    <button onclick="checkAnswer(this, false)">Endocérvix</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+  </div>
+
+  <div class="question">
+    <p><strong>5. ¿Qué capa recubre internamente al útero?</strong></p>
+    <button onclick="checkAnswer(this, true)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+    <button onclick="checkAnswer(this, false)">Perimetrio</button>
+  </div>
+
+  <button id="nextLevelBtn" disabled onclick="goNextLevel()">Siguiente Nivel</button>
+  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
 
   <script>
-    let correctCount = 0;
     let totalQuestions = 5;
+    let correctAnswers = 0;
     let answeredQuestions = 0;
 
-function checkAnswer(btn, isCorrect) {
-      if (btn.parentElement.getAttribute('answered')) return;
+    function checkAnswer(btn, isCorrect) {
+      const parent = btn.parentElement;
+      if (parent.getAttribute('answered')) return;
+      parent.setAttribute('answered', 'true');
       answeredQuestions++;
-      btn.parentElement.setAttribute('answered', 'true');
 
       if (isCorrect) {
         correctAnswers++;
@@ -113,11 +122,9 @@ function checkAnswer(btn, isCorrect) {
         }, 800);
       }
 
-      // Deshabilitar todos los botones de esta pregunta
-      const buttons = btn.parentElement.querySelectorAll('button');
+      const buttons = parent.querySelectorAll('button');
       buttons.forEach(b => b.disabled = true);
 
-      // Mostrar botón de siguiente nivel si todas son correctas
       if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
         const nextBtn = document.getElementById('nextLevelBtn');
         nextBtn.disabled = false;
@@ -129,6 +136,10 @@ function checkAnswer(btn, isCorrect) {
       if (!document.getElementById('nextLevelBtn').disabled) {
         window.location.href = 'nivel3.html';
       }
+    }
+
+    function abandonGame() {
+      window.location.href = 'final-intento.html';
     }
   </script>
 </body>
