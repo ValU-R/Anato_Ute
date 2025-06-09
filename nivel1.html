@@ -2,93 +2,91 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nivel 1 - Anatomía del Útero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nivel 1 - Anatomía Básica del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #e3f2fd;
+      background-color: #e8f5e9;
       padding: 20px;
       text-align: center;
-      color: #0d47a1;
-    }
-    h1 {
-      margin-bottom: 10px;
     }
     .question {
-      background-color: #bbdefb;
+      background-color: #ffffff;
+      border: 2px solid #81c784;
       border-radius: 10px;
-      padding: 15px;
       margin: 20px auto;
-      max-width: 700px;
-      text-align: left;
+      padding: 20px;
+      max-width: 600px;
     }
     button {
-      margin: 8px 10px 8px 0;
+      margin: 5px;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #64b5f6;
+      background-color: #a5d6a7;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #66bb6a;
+    }
+    .correct {
+      background-color: #4caf50 !important;
       color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    button:hover:not(:disabled) {
-      background-color: #1976d2;
+    .incorrect {
+      background-color: #ef5350 !important;
+      color: white;
     }
-    button.correct {
-      background-color: #388e3c !important;
-    }
-    button.incorrect {
-      background-color: #d32f2f !important;
-    }
-    #nextLevelBtn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      background-color: #1b5e20;
-      cursor: not-allowed;
-    }
-    #nextLevelBtn.enabled {
-      cursor: pointer;
-      background-color: #43a047;
-    }
-    #abandonBtn {
-      background-color: #d32f2f;
+    #next-level {
+      display: none;
       margin-top: 20px;
+      background-color: #388e3c;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Nivel 1 - Anatomía del Útero</h1>
-  <p>Responde correctamente todas las preguntas para avanzar.</p>
+  <h1>Nivel 1: Anatomía Básica del Útero</h1>
+  <p>Selecciona la respuesta correcta para cada pregunta:</p>
 
   <div class="question">
-    <p><strong>1. ¿Cuál es la capa muscular del útero?</strong></p>
-    <button onclick="checkAnswer(this, true)">Miometrio</button>
+    <p>1. ¿Qué parte del útero conecta con la vagina?</p>
     <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, true)">Cervix</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+  </div>
+
+  <div class="question">
+    <p>2. ¿Cómo se llama la capa más interna del útero?</p>
+    <button onclick="checkAnswer(this, false)">Perimetrio</button>
+    <button onclick="checkAnswer(this, true)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+  </div>
+
+  <div class="question">
+    <p>3. ¿Qué estructura conecta el útero con los ovarios?</p>
+    <button onclick="checkAnswer(this, true)">Trompas de Falopio</button>
+    <button onclick="checkAnswer(this, false)">Ligamento ancho</button>
+    <button onclick="checkAnswer(this, false)">Cérvix</button>
+  </div>
+
+  <div class="question">
+    <p>4. ¿Cuál es la capa muscular del útero?</p>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, true)">Miometrio</button>
     <button onclick="checkAnswer(this, false)">Perimetrio</button>
   </div>
 
   <div class="question">
-    <p><strong>2. ¿Dónde se encuentra el endometrio?</strong></p>
-    <button onclick="checkAnswer(this, false)">Capa externa del útero</button>
-    <button onclick="checkAnswer(this, true)">Capa interna del útero</button>
-    <button onclick="checkAnswer(this, false)">Capa muscular del útero</button>
+    <p>5. ¿Qué forma tiene el útero en una mujer adulta sana?</p>
+    <button onclick="checkAnswer(this, false)">Ovalada</button>
+    <button onclick="checkAnswer(this, false)">Redonda</button>
+    <button onclick="checkAnswer(this, true)">Pera</button>
   </div>
-
-  <div class="question">
-    <p><strong>3. ¿Cuál es la función principal del cuello uterino?</strong></p>
-    <button onclick="checkAnswer(this, false)">Producir óvulos</button>
-    <button onclick="checkAnswer(this, true)">Conectar el útero con la vagina</button>
-    <button onclick="checkAnswer(this, false)">Proteger los ovarios</button>
-  </div>
-
-  <button id="nextLevelBtn" disabled onclick="goNextLevel()">Siguiente Nivel</button>
-  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
 
   <script>
-    let totalQuestions = 3;
+    let totalQuestions = 5;
     let correctAnswers = 0;
     let answeredQuestions = 0;
 
