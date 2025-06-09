@@ -1,139 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nivel 3 - Enfermedades del Útero</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nivel 3 - Anatomía Avanzada del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #fff3f3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      background-color: #e3f2fd;
       padding: 20px;
-    }
-    h1 {
-      color: #b71c1c;
+      text-align: center;
     }
     .question {
       background-color: #ffffff;
-      border: 2px solid #ef9a9a;
+      border: 2px solid #90caf9;
       border-radius: 10px;
+      margin: 20px auto;
       padding: 20px;
-      margin: 20px 0;
       max-width: 600px;
     }
-    .options button {
-      margin: 10px;
+    button {
+      margin: 5px;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #ffcdd2;
+      background-color: #bbdefb;
       cursor: pointer;
     }
-    .options button:hover {
-      background-color: #ef9a9a;
+    button:hover {
+      background-color: #64b5f6;
     }
     .correct {
-      background-color: #66bb6a !important;
+      background-color: #4caf50 !important;
       color: white;
     }
     .incorrect {
       background-color: #ef5350 !important;
       color: white;
     }
+    #next-level {
+      display: none;
+      margin-top: 20px;
+      background-color: #1976d2;
+      color: white;
+    }
   </style>
 </head>
 <body>
-  <h1>Explora el Útero - Nivel 3: Enfermedades</h1>
-  <p>Selecciona la respuesta correcta sobre las enfermedades que pueden afectar al útero.</p>
+  <h1>Nivel 3: Anatomía Avanzada del Útero</h1>
+  <p>Selecciona la respuesta correcta para cada pregunta:</p>
 
   <div class="question">
-    <p><strong>1. ¿Qué es la endometriosis?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Cuando el tejido endometrial crece fuera del útero</button>
-      <button onclick="checkAnswer(this, false)">Una infección del cuello uterino</button>
-      <button onclick="checkAnswer(this, false)">Una contracción involuntaria del útero</button>
-    </div>
+    <p>1. ¿Qué arteria irriga principalmente el útero?</p>
+    <button onclick="checkAnswer(this, true)">Arteria uterina</button>
+    <button onclick="checkAnswer(this, false)">Arteria ovárica</button>
+    <button onclick="checkAnswer(this, false)">Arteria mesentérica</button>
   </div>
 
   <div class="question">
-    <p><strong>2. ¿Cuál de estas enfermedades es benigna pero puede causar sangrados intensos?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Miomas uterinos</button>
-      <button onclick="checkAnswer(this, false)">Cáncer de cuello uterino</button>
-      <button onclick="checkAnswer(this, false)">Endometriosis</button>
-    </div>
+    <p>2. ¿Dónde se localiza el plexo venoso uterino?</p>
+    <button onclick="checkAnswer(this, true)">En los márgenes laterales del útero</button>
+    <button onclick="checkAnswer(this, false)">En el fondo uterino</button>
+    <button onclick="checkAnswer(this, false)">En el endometrio</button>
   </div>
 
   <div class="question">
-    <p><strong>3. ¿Cuál es un síntoma común del cáncer de útero?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Sangrado vaginal anormal</button>
-      <button onclick="checkAnswer(this, false)">Dolor en las mamas</button>
-      <button onclick="checkAnswer(this, false)">Pérdida de visión</button>
-    </div>
+    <p>3. ¿Cuál es la función del miometrio?</p>
+    <button onclick="checkAnswer(this, true)">Proporcionar contracción muscular</button>
+    <button onclick="checkAnswer(this, false)">Nutrir el endometrio</button>
+    <button onclick="checkAnswer(this, false)">Proteger los ovarios</button>
   </div>
 
   <div class="question">
-    <p><strong>4. ¿Qué examen ayuda a detectar el cáncer de cuello uterino?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Papanicolau (Pap)</button>
-      <button onclick="checkAnswer(this, false)">Ecografía abdominal</button>
-      <button onclick="checkAnswer(this, false)">Resonancia magnética</button>
-    </div>
+    <p>4. ¿Qué tipo de tejido forma la capa endometrial?</p>
+    <button onclick="checkAnswer(this, true)">Epitelio columnar ciliado y estroma glandular</button>
+    <button onclick="checkAnswer(this, false)">Tejido óseo compacto</button>
+    <button onclick="checkAnswer(this, false)">Epitelio escamoso estratificado</button>
   </div>
 
   <div class="question">
-    <p><strong>5. ¿Cuál es una posible complicación de la endometriosis?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Infertilidad</button>
-      <button onclick="checkAnswer(this, false)">Dolor de garganta</button>
-      <button onclick="checkAnswer(this, false)">Problemas respiratorios</button>
-    </div>
+    <p>5. ¿Qué ligamento contiene los vasos uterinos?</p>
+    <button onclick="checkAnswer(this, true)">Ligamento ancho</button>
+    <button onclick="checkAnswer(this, false)">Ligamento suspensorio del ovario</button>
+    <button onclick="checkAnswer(this, false)">Ligamento redondo</button>
   </div>
 
-  <div class="question">
-    <p><strong>6. ¿Qué caracteriza a los pólipos endometriales?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Crecimientos benignos en el endometrio</button>
-      <button onclick="checkAnswer(this, false)">Úlceras en el útero</button>
-      <button onclick="checkAnswer(this, false)">Inflamación del cérvix</button>
-    </div>
-  </div>
-
-  <div class="question">
-    <p><strong>7. ¿Qué infección de transmisión sexual puede llevar al cáncer de cuello uterino?</strong></p>
-    <div class="options">
-      <button onclick="checkAnswer(this, true)">Virus del Papiloma Humano (VPH)</button>
-      <button onclick="checkAnswer(this, false)">VIH</button>
-      <button onclick="checkAnswer(this, false)">Hepatitis B</button>
-    </div>
-  </div>
-   <a id="nextLevel" href="../Nivel4/index.html">
-    <button>Siguiente Nivel</button>
-  </a>
+  <button id="next-level" onclick="window.location.href='nivel4.html'">Siguiente Nivel</button>
 
   <script>
-    let correctAnswers = 0;
+    let correctCount = 0;
+    const totalQuestions = 5;
+
     function checkAnswer(button, isCorrect) {
+      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
+      const buttons = button.parentElement.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+
       if (isCorrect) {
         button.classList.add('correct');
-        correctAnswers++;
+        correctCount++;
+        if (correctCount === totalQuestions) {
+          document.getElementById('next-level').style.display = 'inline-block';
+        }
       } else {
         button.classList.add('incorrect');
-      }
-      const buttons = button.parentElement.querySelectorAll('button');
-      buttons.forEach(btn => btn.disabled = true);
-
-      if (correctAnswers === 7) {
-        document.getElementById('nextLevel').style.display = 'inline-block';
+        setTimeout(() => window.location.href = 'perdiste.html', 1000);
       }
     }
   </script>
-</body>
-</html>
-
 </body>
 </html>
