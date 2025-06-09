@@ -2,88 +2,115 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nivel 4 - Casos Clínicos Anatómicos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nivel 4 - Casos Clínicos Anatómicos del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fce4ec;
+      background-color: #f3e5f5;
       padding: 20px;
       text-align: center;
+      color: #6a1b9a;
+    }
+    h1 {
+      margin-bottom: 10px;
     }
     .case {
-      background-color: #ffffff;
-      border: 2px solid #f48fb1;
+      background-color: #e1bee7;
       border-radius: 10px;
-      margin: 20px auto;
       padding: 20px;
+      margin: 20px auto;
       max-width: 700px;
+      text-align: left;
     }
     button {
-      margin: 10px;
+      margin: 8px 10px 8px 0;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #f8bbd0;
+      background-color: #7e57c2;
+      color: white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #f06292;
+    button:hover:not(:disabled) {
+      background-color: #512da8;
     }
-    .correct {
-      background-color: #66bb6a !important;
-      color: white;
+    button.correct {
+      background-color: #388e3c !important;
     }
-    .incorrect {
-      background-color: #ef5350 !important;
-      color: white;
+    button.incorrect {
+      background-color: #d32f2f !important;
     }
-    #finish-button {
-      display: none;
+    #finishGameBtn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #4527a0;
+      cursor: not-allowed;
+    }
+    #finishGameBtn.enabled {
+      cursor: pointer;
+      background-color: #673ab7;
+    }
+    #abandonBtn {
+      background-color: #d32f2f;
       margin-top: 20px;
-      background-color: #c2185b;
-      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Nivel 4 - Casos Clínicos con Enfoque Anatómico</h1>
-  <p>Lee cada caso y selecciona la mejor opción:</p>
+  <h1>Nivel 4 - Casos Clínicos Anatómicos del Útero</h1>
+  <p>Responde correctamente para finalizar el juego.</p>
 
   <div class="case">
-    <p><strong>Caso 1:</strong> Una paciente tiene una lesión en el fondo uterino. ¿Cuál es la capa más externa afectada?</p>
-    <button onclick="checkAnswer(this, false)">Endometrio</button>
-    <button onclick="checkAnswer(this, false)">Miometrio</button>
+    <p><strong>Caso 1:</strong> ¿Cuál es la capa más externa del útero?</p>
     <button onclick="checkAnswer(this, true)">Perimetrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 2:</strong> Una malformación congénita impide la fusión de los conductos de Müller. ¿Qué tipo de útero se formará?</p>
-    <button onclick="checkAnswer(this, false)">Útero engrosado</button>
-    <button onclick="checkAnswer(this, true)">Útero bicorne</button>
-    <button onclick="checkAnswer(this, false)">Útero invertido</button>
+    <p><strong>Caso 2:</strong> ¿Qué estructura conecta el útero con la vagina?</p>
+    <button onclick="checkAnswer(this, false)">Trompas de Falopio</button>
+    <button onclick="checkAnswer(this, true)">Cuello uterino (cérvix)</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 3:</strong> Una paciente se somete a una histerectomía y se observa que los vasos uterinos están cruzando una estructura tubular. ¿Qué estructura es esa?</p>
-    <button onclick="checkAnswer(this, false)">Ovario</button>
-    <button onclick="checkAnswer(this, false)">Vena iliaca</button>
-    <button onclick="checkAnswer(this, true)">Uréter</button>
+    <p><strong>Caso 3:</strong> ¿Cuál es la función principal del miometrio?</p>
+    <button onclick="checkAnswer(this, false)">Nutrir al embrión</button>
+    <button onclick="checkAnswer(this, true)">Contracciones uterinas</button>
+    <button onclick="checkAnswer(this, false)">Producción hormonal</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 4:</strong> Durante una laparoscopia, se observan pliegues del ligamento ancho que rodean una trompa uterina. ¿Qué nombre recibe esa estructura?</p>
-    <button onclick="checkAnswer(this, true)">Mesosalpinx</button>
-    <button onclick="checkAnswer(this, false)">Mesometrio</button>
-    <button onclick="checkAnswer(this, false)">Mesovario</button>
+    <p><strong>Caso 4:</strong> ¿Dónde se implanta el embrión durante el embarazo?</p>
+    <button onclick="checkAnswer(this, true)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Perimetrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
   </div>
 
-  <button id="finish-button" onclick="window.location.href='felicitaciones.html'">Finalizar Juego</button>
+  <div class="case">
+    <p><strong>Caso 5:</strong> ¿Cuál de las siguientes estructuras NO forma parte del útero?</p>
+    <button onclick="checkAnswer(this, false)">Istmo</button>
+    <button onclick="checkAnswer(this, false)">Fondo uterino</button>
+    <button onclick="checkAnswer(this, false)">Endocérvix</button>
+    <button onclick="checkAnswer(this, true)">Ovario</button>
+  </div>
+
+  <button id="finishGameBtn" disabled onclick="finishGame()">Finalizar Juego</button>
+  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
 
   <script>
-    let correctCount = 0;
-    const totalCases = 4;
+    let totalQuestions = 5;
+    let correctAnswers = 0;
+    let answeredQuestions = 0;
 
-    function checkAnswer(button, isCorrect) {
-      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
-      const buttons = button.parentElement.querySelectorAll(
+    function checkAnswer(btn, isCorrect) {
+      if (btn.parentElement.getAttribute('answered')) return;
+      answeredQuestions++;
+      btn.parentElement.setAttribute('answered', 'true');
+
+      if (isCorrect) {
+        correctAnswers++;
