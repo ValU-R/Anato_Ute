@@ -38,11 +38,17 @@
       background-color: #ef5350 !important;
       color: white;
     }
-    #next-level {
+    #nextLevelBtn {
       display: none;
-      margin-top: 20px;
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 16px;
       background-color: #388e3c;
       color: white;
+      border-radius: 10px;
+    }
+    #nextLevelBtn.enabled {
+      display: inline-block;
     }
   </style>
 </head>
@@ -50,6 +56,7 @@
   <h1>Nivel 1: Anatomía Básica del Útero</h1>
   <p>Selecciona la respuesta correcta para cada pregunta:</p>
 
+  <!-- PREGUNTAS -->
   <div class="question">
     <p>1. ¿Qué parte del útero conecta con la vagina?</p>
     <button onclick="checkAnswer(this, false)">Endometrio</button>
@@ -85,13 +92,16 @@
     <button onclick="checkAnswer(this, true)">Pera</button>
   </div>
 
+  <!-- BOTÓN OCULTO DE SIGUIENTE NIVEL -->
+  <button id="nextLevelBtn" onclick="goNextLevel()">Siguiente Nivel</button>
+
   <script>
     let totalQuestions = 5;
     let correctAnswers = 0;
     let answeredQuestions = 0;
 
     function checkAnswer(btn, isCorrect) {
-      if (btn.parentElement.getAttribute('answered')) return; // Prevent multiple answers
+      if (btn.parentElement.getAttribute('answered')) return;
       answeredQuestions++;
       btn.parentElement.setAttribute('answered', 'true');
 
@@ -105,10 +115,11 @@
         }, 800);
       }
 
-      // Disable all buttons in this question
+      // Deshabilitar todos los botones de esta pregunta
       const buttons = btn.parentElement.querySelectorAll('button');
       buttons.forEach(b => b.disabled = true);
 
+      // Mostrar botón de siguiente nivel si todas son correctas
       if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
         const nextBtn = document.getElementById('nextLevelBtn');
         nextBtn.disabled = false;
@@ -120,10 +131,6 @@
       if (!document.getElementById('nextLevelBtn').disabled) {
         window.location.href = 'nivel2.html';
       }
-    }
-
-    function abandonGame() {
-      window.location.href = 'final-intento.html';
     }
   </script>
 </body>
