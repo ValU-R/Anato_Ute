@@ -2,60 +2,47 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nivel 4 - Casos Clínicos Anatómicos del Útero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nivel 4 - Casos Clínicos Anatómicos</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f3e5f5;
+      background-color: #fce4ec;
       padding: 20px;
       text-align: center;
-      color: #6a1b9a;
-    }
-    h1 {
-      margin-bottom: 10px;
     }
     .case {
-      background-color: #e1bee7;
+      background-color: #ffffff;
+      border: 2px solid #f48fb1;
       border-radius: 10px;
-      padding: 20px;
       margin: 20px auto;
+      padding: 20px;
       max-width: 700px;
-      text-align: left;
     }
     button {
-      margin: 8px 10px 8px 0;
+      margin: 10px;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #7e57c2;
+      background-color: #f8bbd0;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #f06292;
+    }
+    .correct {
+      background-color: #66bb6a !important;
       color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
     }
-    button:hover:not(:disabled) {
-      background-color: #512da8;
+    .incorrect {
+      background-color: #ef5350 !important;
+      color: white;
     }
-    button.correct {
-      background-color: #388e3c !important;
-    }
-    button.incorrect {
-      background-color: #d32f2f !important;
-    }
-    #finishGameBtn {
-      margin-top: 30px;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      background-color: #4527a0;
-      cursor: not-allowed;
-    }
-    #finishGameBtn.enabled {
-      cursor: pointer;
-      background-color: #673ab7;
-    }
-    #abandonBtn {
-      background-color: #d32f2f;
+    #finish-button {
+      display: none;
       margin-top: 20px;
+      background-color: #c2185b;
+      color: white;
     }
   </style>
 </head>
@@ -99,7 +86,7 @@
     <button onclick="checkAnswer(this, true)">Ovario</button>
   </div>
 
-  <button id="finishGameBtn" disabled onclick="finishGame()">Finalizar Juego</button>
+  <button id="finishGameBtn" onclick="finishGame()">Finalizar Juego</button>
   <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
 
   <script>
@@ -108,9 +95,37 @@
     let answeredQuestions = 0;
 
     function checkAnswer(btn, isCorrect) {
-      if (btn.parentElement.getAttribute('answered')) return;
+      const caseDiv = btn.parentElement;
+
+      if (caseDiv.getAttribute('answered')) return;
+      caseDiv.setAttribute('answered', 'true');
       answeredQuestions++;
-      btn.parentElement.setAttribute('answered', 'true');
 
       if (isCorrect) {
         correctAnswers++;
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('incorrect');
+        setTimeout(() => {
+          window.location.href = 'final-intento.html';
+        }, 800);
+      }
+
+      const buttons = caseDiv.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+
+      if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
+        document.getElementById('finishGameBtn').style.display = 'inline-block';
+      }
+    }
+
+    function finishGame() {
+      window.location.href = 'fin-juego.html'; // Puedes cambiar esta URL según tu estructura
+    }
+
+    function abandonGame() {
+      window.location.href = 'final-intento.html';
+    }
+  </script>
+</body>
+</html>
