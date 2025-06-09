@@ -58,21 +58,14 @@
   </div>
 
   <div class="case">
-    <p><strong>Caso 2:</strong> Una malformación congénita impide la fusión de los conductos de Müller. ¿Qué tipo de útero se formará?</p>
-    <button onclick="checkAnswer(this, false)">Útero engrosado</button>
-    <button onclick="checkAnswer(this, true)">Útero bicorne</button>
-    <button onclick="checkAnswer(this, false)">Útero invertido</button>
-  </div>
-
-  <div class="case">
-    <p><strong>Caso 3:</strong> Una paciente se somete a una histerectomía y se observa que los vasos uterinos están cruzando una estructura tubular. ¿Qué estructura es esa?</p>
+    <p><strong>Caso 2:</strong> Una paciente se somete a una histerectomía y se observa que los vasos uterinos están cruzando una estructura tubular. ¿Qué estructura es esa?</p>
     <button onclick="checkAnswer(this, false)">Ovario</button>
     <button onclick="checkAnswer(this, false)">Vena iliaca</button>
     <button onclick="checkAnswer(this, true)">Uréter</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 4:</strong> Durante una laparoscopia, se observan pliegues del ligamento ancho que rodean una trompa uterina. ¿Qué nombre recibe esa estructura?</p>
+    <p><strong>Caso 3:</strong> Durante una laparoscopia, se observan pliegues del ligamento ancho que rodean una trompa uterina. ¿Qué nombre recibe esa estructura?</p>
     <button onclick="checkAnswer(this, true)">Mesosalpinx</button>
     <button onclick="checkAnswer(this, false)">Mesometrio</button>
     <button onclick="checkAnswer(this, false)">Mesovario</button>
@@ -82,7 +75,7 @@
 
   <script>
     let correctCount = 0;
-    const totalCases = 4;
+    const totalCases = 3;
 
     function checkAnswer(button, isCorrect) {
       if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
