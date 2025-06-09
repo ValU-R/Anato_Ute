@@ -47,84 +47,58 @@
   </style>
 </head>
 <body>
-  <h1>Nivel 4 - Casos Clínicos Anatómicos del Útero</h1>
-  <p>Responde correctamente para finalizar el juego.</p>
+  <h1>Nivel 4 - Casos Clínicos con Enfoque Anatómico</h1>
+  <p>Lee cada caso y selecciona la mejor opción:</p>
 
   <div class="case">
-    <p><strong>Caso 1:</strong> ¿Cuál es la capa más externa del útero?</p>
+    <p><strong>Caso 1:</strong> Una paciente tiene una lesión en el fondo uterino. ¿Cuál es la capa más externa afectada?</p>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
     <button onclick="checkAnswer(this, true)">Perimetrio</button>
-    <button onclick="checkAnswer(this, false)">Miometrio</button>
-    <button onclick="checkAnswer(this, false)">Endometrio</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 2:</strong> ¿Qué estructura conecta el útero con la vagina?</p>
-    <button onclick="checkAnswer(this, false)">Trompas de Falopio</button>
-    <button onclick="checkAnswer(this, true)">Cuello uterino (cérvix)</button>
-    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <p><strong>Caso 2:</strong> Una malformación congénita impide la fusión de los conductos de Müller. ¿Qué tipo de útero se formará?</p>
+    <button onclick="checkAnswer(this, false)">Útero engrosado</button>
+    <button onclick="checkAnswer(this, true)">Útero bicorne</button>
+    <button onclick="checkAnswer(this, false)">Útero invertido</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 3:</strong> ¿Cuál es la función principal del miometrio?</p>
-    <button onclick="checkAnswer(this, false)">Nutrir al embrión</button>
-    <button onclick="checkAnswer(this, true)">Contracciones uterinas</button>
-    <button onclick="checkAnswer(this, false)">Producción hormonal</button>
+    <p><strong>Caso 3:</strong> Una paciente se somete a una histerectomía y se observa que los vasos uterinos están cruzando una estructura tubular. ¿Qué estructura es esa?</p>
+    <button onclick="checkAnswer(this, false)">Ovario</button>
+    <button onclick="checkAnswer(this, false)">Vena iliaca</button>
+    <button onclick="checkAnswer(this, true)">Uréter</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 4:</strong> ¿Dónde se implanta el embrión durante el embarazo?</p>
-    <button onclick="checkAnswer(this, true)">Endometrio</button>
-    <button onclick="checkAnswer(this, false)">Perimetrio</button>
-    <button onclick="checkAnswer(this, false)">Miometrio</button>
+    <p><strong>Caso 4:</strong> Durante una laparoscopia, se observan pliegues del ligamento ancho que rodean una trompa uterina. ¿Qué nombre recibe esa estructura?</p>
+    <button onclick="checkAnswer(this, true)">Mesosalpinx</button>
+    <button onclick="checkAnswer(this, false)">Mesometrio</button>
+    <button onclick="checkAnswer(this, false)">Mesovario</button>
   </div>
 
-  <div class="case">
-    <p><strong>Caso 5:</strong> ¿Cuál de las siguientes estructuras NO forma parte del útero?</p>
-    <button onclick="checkAnswer(this, false)">Istmo</button>
-    <button onclick="checkAnswer(this, false)">Fondo uterino</button>
-    <button onclick="checkAnswer(this, false)">Endocérvix</button>
-    <button onclick="checkAnswer(this, true)">Ovario</button>
-  </div>
-
-  <button id="finishGameBtn" onclick="finishGame()">Finalizar Juego</button>
-  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
+  <button id="finish-button" onclick="window.location.href='felicitaciones.html'">Finalizar Juego</button>
 
   <script>
-    let totalQuestions = 5;
-    let correctAnswers = 0;
-    let answeredQuestions = 0;
+    let correctCount = 0;
+    const totalCases = 4;
 
-    function checkAnswer(btn, isCorrect) {
-      const caseDiv = btn.parentElement;
-
-      if (caseDiv.getAttribute('answered')) return;
-      caseDiv.setAttribute('answered', 'true');
-      answeredQuestions++;
-
-      if (isCorrect) {
-        correctAnswers++;
-        btn.classList.add('correct');
-      } else {
-        btn.classList.add('incorrect');
-        setTimeout(() => {
-          window.location.href = 'final-intento.html';
-        }, 800);
-      }
-
-      const buttons = caseDiv.querySelectorAll('button');
+    function checkAnswer(button, isCorrect) {
+      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
+      const buttons = button.parentElement.querySelectorAll('button');
       buttons.forEach(b => b.disabled = true);
 
-      if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
-        document.getElementById('finishGameBtn').style.display = 'inline-block';
+      if (isCorrect) {
+        button.classList.add('correct');
+        correctCount++;
+        if (correctCount === totalCases) {
+          document.getElementById('finish-button').style.display = 'inline-block';
+        }
+      } else {
+        button.classList.add('incorrect');
+        setTimeout(() => window.location.href = 'final-intento.html', 1000);
       }
-    }
-
-    function finishGame() {
-      window.location.href = 'fin-juego.html'; // Puedes cambiar esta URL según tu estructura
-    }
-
-    function abandonGame() {
-      window.location.href = 'final-intento.html';
     }
   </script>
 </body>
