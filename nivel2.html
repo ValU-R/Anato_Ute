@@ -69,5 +69,62 @@
     <button onclick="checkAnswer(this, false)">Almacenar espermatozoides</button>
   </div>
 
-  <div class="question
+  <div class="question">
+    <p><strong>2. ¿Qué estructura conecta el útero con la vagina?</strong></p>
+    <button onclick="checkAnswer(this, true)">Cérvix (cuello uterino)</button>
+    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
+  </div>
 
+  <div class="question">
+    <p><strong>3. ¿Qué nombre recibe la cavidad interna del útero donde se implanta el embrión?</strong></p>
+    <button onclick="checkAnswer(this, false)">Ovario</button>
+    <button onclick="checkAnswer(this, true)">Cavidad endometrial</button>
+    <button onclick="checkAnswer(this, false)">Trompa uterina</button>
+  </div>
+
+  <button id="nextLevelBtn" onclick="goNextLevel()">Siguiente Nivel</button>
+  <br>
+  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
+
+  <script>
+    let totalQuestions = 3;
+    let correctAnswers = 0;
+    let answeredQuestions = 0;
+
+    function checkAnswer(btn, isCorrect) {
+      const questionDiv = btn.parentElement;
+
+      if (questionDiv.getAttribute('answered')) return;
+
+      questionDiv.setAttribute('answered', 'true');
+      answeredQuestions++;
+
+      if (isCorrect) {
+        correctAnswers++;
+        btn.classList.add('correct');
+      } else {
+        btn.classList.add('incorrect');
+        setTimeout(() => {
+          window.location.href = 'final-intento.html';
+        }, 800);
+      }
+
+      const allButtons = questionDiv.querySelectorAll('button');
+      allButtons.forEach(b => b.disabled = true);
+
+      if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
+        document.getElementById('nextLevelBtn').style.display = 'inline-block';
+      }
+    }
+
+    function goNextLevel() {
+      window.location.href = 'nivel3.html';
+    }
+
+    function abandonGame() {
+      window.location.href = 'final-intento.html';
+    }
+  </script>
+</body>
+</html>
