@@ -2,110 +2,129 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nivel 2 - Anatomía Intermedia del Útero</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nivel 2 - Estructuras del Útero</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #fff8e1;
+      background-color: #f3e5f5;
       padding: 20px;
       text-align: center;
+      color: #6a1b9a;
+    }
+    h1 {
+      margin-bottom: 10px;
     }
     .question {
-      background-color: #ffffff;
-      border: 2px solid #ffcc80;
+      background-color: #e1bee7;
       border-radius: 10px;
+      padding: 15px;
       margin: 20px auto;
-      padding: 20px;
-      max-width: 600px;
+      max-width: 700px;
+      text-align: left;
     }
     button {
-      margin: 5px;
+      margin: 8px 10px 8px 0;
       padding: 10px 20px;
       border-radius: 8px;
       border: none;
-      background-color: #ffe082;
+      background-color: #ba68c8;
+      color: white;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #ffb74d;
+    button:hover:not(:disabled) {
+      background-color: #8e24aa;
     }
-    .correct {
-      background-color: #4caf50 !important;
-      color: white;
+    button.correct {
+      background-color: #388e3c !important;
     }
-    .incorrect {
-      background-color: #ef5350 !important;
-      color: white;
+    button.incorrect {
+      background-color: #d32f2f !important;
     }
-    #next-level {
-      display: none;
+    #nextLevelBtn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.1em;
+      background-color: #4a148c;
+      cursor: not-allowed;
+    }
+    #nextLevelBtn.enabled {
+      cursor: pointer;
+      background-color: #7b1fa2;
+    }
+    #abandonBtn {
+      background-color: #d32f2f;
       margin-top: 20px;
-      background-color: #f57c00;
-      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Nivel 2: Anatomía Intermedia del Útero</h1>
-  <p>Selecciona la respuesta correcta para cada pregunta:</p>
+  <h1>Nivel 2 - Estructuras del Útero</h1>
+  <p>Responde correctamente todas las preguntas para avanzar.</p>
 
   <div class="question">
-    <p>1. ¿Qué ligamento sostiene el útero en posición dentro de la pelvis?</p>
-    <button onclick="checkAnswer(this, true)">Ligamento ancho</button>
-    <button onclick="checkAnswer(this, false)">Ligamento redondo</button>
-    <button onclick="checkAnswer(this, false)">Ligamento inguinal</button>
+    <p><strong>1. ¿Cuál es la función de las trompas de Falopio en relación con el útero?</strong></p>
+    <button onclick="checkAnswer(this, false)">Producir hormonas</button>
+    <button onclick="checkAnswer(this, true)">Transportar el óvulo hacia el útero</button>
+    <button onclick="checkAnswer(this, false)">Almacenar espermatozoides</button>
   </div>
 
   <div class="question">
-    <p>2. ¿Cuál es la relación anatómica del útero con respecto a la vejiga?</p>
-    <button onclick="checkAnswer(this, true)">Está posterior a la vejiga</button>
-    <button onclick="checkAnswer(this, false)">Está anterior a la vejiga</button>
-    <button onclick="checkAnswer(this, false)">Está superior a los riñones</button>
-  </div>
-
-  <div class="question">
-    <p>3. ¿En qué parte del útero se implanta normalmente el embrión?</p>
-    <button onclick="checkAnswer(this, false)">Cuello uterino</button>
-    <button onclick="checkAnswer(this, true)">Cuerpo uterino</button>
-    <button onclick="checkAnswer(this, false)">Istmo uterino</button>
-  </div>
-
-  <div class="question">
-    <p>4. ¿Cuál es la porción estrecha que une el cuerpo del útero con el cuello?</p>
+    <p><strong>2. ¿Qué estructura conecta el útero con la vagina?</strong></p>
+    <button onclick="checkAnswer(this, true)">Cérvix (cuello uterino)</button>
     <button onclick="checkAnswer(this, false)">Endometrio</button>
-    <button onclick="checkAnswer(this, false)">Fondo</button>
-    <button onclick="checkAnswer(this, true)">Istmo</button>
+    <button onclick="checkAnswer(this, false)">Miometrio</button>
   </div>
 
   <div class="question">
-    <p>5. ¿Qué nombre recibe la parte superior del útero, opuesta al cérvix?</p>
-    <button onclick="checkAnswer(this, true)">Fondo uterino</button>
-    <button onclick="checkAnswer(this, false)">Cuello uterino</button>
-    <button onclick="checkAnswer(this, false)">Istmo</button>
+    <p><strong>3. ¿Qué nombre recibe la cavidad interna del útero donde se implanta el embrión?</strong></p>
+    <button onclick="checkAnswer(this, false)">Ovario</button>
+    <button onclick="checkAnswer(this, true)">Cavidad endometrial</button>
+    <button onclick="checkAnswer(this, false)">Trompa uterina</button>
   </div>
 
-  <button id="next-level" onclick="window.location.href='nivel3.html'">Siguiente Nivel</button>
+  <button id="nextLevelBtn" disabled onclick="goNextLevel()">Siguiente Nivel</button>
+  <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
 
   <script>
-    let correctCount = 0;
-    const totalQuestions = 5;
+    let totalQuestions = 3;
+    let correctAnswers = 0;
+    let answeredQuestions = 0;
 
-    function checkAnswer(button, isCorrect) {
-      if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
-      const buttons = button.parentElement.querySelectorAll('button');
-      buttons.forEach(b => b.disabled = true);
+    function checkAnswer(btn, isCorrect) {
+      if (btn.parentElement.getAttribute('answered')) return;
+      answeredQuestions++;
+      btn.parentElement.setAttribute('answered', 'true');
 
       if (isCorrect) {
-        button.classList.add('correct');
-        correctCount++;
-        if (correctCount === totalQuestions) {
-          document.getElementById('next-level').style.display = 'inline-block';
-        }
+        correctAnswers++;
+        btn.classList.add('correct');
       } else {
-        button.classList.add('incorrect');
-        setTimeout(() => window.location.href = 'perdiste.html', 1000);
+        btn.classList.add('incorrect');
+        setTimeout(() => {
+          window.location.href = 'final-intento.html';
+        }, 800);
       }
+
+      const buttons = btn.parentElement.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+
+      if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
+        const nextBtn = document.getElementById('nextLevelBtn');
+        nextBtn.disabled = false;
+        nextBtn.classList.add('enabled');
+      }
+    }
+
+    function goNextLevel() {
+      if (!document.getElementById('nextLevelBtn').disabled) {
+        window.location.href = 'nivel3.html';
+      }
+    }
+
+    function abandonGame() {
+      window.location.href = 'final-intento.html';
     }
   </script>
 </body>
