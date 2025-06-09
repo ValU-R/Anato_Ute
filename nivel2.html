@@ -41,8 +41,14 @@
     #next-level {
       display: none;
       margin-top: 20px;
+padding: 15px 30px;
+      font-size: 16px;
       background-color: #f57c00;
       color: white;
+ border-radius: 10px;
+    }
+    #nextLevelBtn.enabled {
+      display: inline-block;
     }
   </style>
 </head>
@@ -89,16 +95,13 @@
 
   <script>
     let correctCount = 0;
-    const totalQuestions = 5;
+    let totalQuestions = 5;
     let answeredQuestions = 0;
 
-    function checkAnswer(btn, isCorrect) {
-      const questionDiv = btn.parentElement;
-
-      if (questionDiv.getAttribute('answered')) return;
-
-      questionDiv.setAttribute('answered', 'true');
+function checkAnswer(btn, isCorrect) {
+      if (btn.parentElement.getAttribute('answered')) return;
       answeredQuestions++;
+      btn.parentElement.setAttribute('answered', 'true');
 
       if (isCorrect) {
         correctAnswers++;
@@ -110,20 +113,22 @@
         }, 800);
       }
 
-      const allButtons = questionDiv.querySelectorAll('button');
-      allButtons.forEach(b => b.disabled = true);
+      // Deshabilitar todos los botones de esta pregunta
+      const buttons = btn.parentElement.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
 
+      // Mostrar botón de siguiente nivel si todas son correctas
       if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
-        document.getElementById('nextLevelBtn').style.display = 'inline-block';
+        const nextBtn = document.getElementById('nextLevelBtn');
+        nextBtn.disabled = false;
+        nextBtn.classList.add('enabled');
       }
     }
 
     function goNextLevel() {
-      window.location.href = 'nivel3.html';
-    }
-
-    function abandonGame() {
-      window.location.href = 'final-intento.html';
+      if (!document.getElementById('nextLevelBtn').disabled) {
+        window.location.href = 'nivel3.html';
+      }
     }
   </script>
 </body>
