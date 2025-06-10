@@ -51,17 +51,17 @@
   <p>Lee cada caso y selecciona la mejor opción:</p>
 
   <div class="case">
-    <p><strong>Caso 1:</strong> Una paciente tiene una lesión en el fondo uterino. ¿Cuál es la capa más externa afectada?</p>
-    <button onclick="checkAnswer(this, false)">Endometrio</button>
+    <p><strong>Caso 1:</strong> 1.	Una ecografía muestra un engrosamiento anormal en la capa funcional interna del útero. ¿Qué estructura está afectada?</p>
+    <button onclick="checkAnswer(this, true)">Endometrio</button>
     <button onclick="checkAnswer(this, false)">Miometrio</button>
-    <button onclick="checkAnswer(this, true)">Perimetrio</button>
+    <button onclick="checkAnswer(this, false)">Cervix</button>
   </div>
 
   <div class="case">
-    <p><strong>Caso 2:</strong> Una paciente se somete a una histerectomía y se observa que los vasos uterinos están cruzando una estructura tubular. ¿Qué estructura es esa?</p>
-    <button onclick="checkAnswer(this, false)">Ovario</button>
-    <button onclick="checkAnswer(this, false)">Vena iliaca</button>
-    <button onclick="checkAnswer(this, true)">Uréter</button>
+    <p><strong>Caso 2:</strong> 2.	3.	Una cirugía revela que el útero está invertido. ¿Qué región del útero se ha desplazado anormalmente?</p>
+    <button onclick="checkAnswer(this, false)">Trompa</button>
+    <button onclick="checkAnswer(this, false)">Cuello</button>
+    <button onclick="checkAnswer(this, true)">Fondo</button>
   </div>
 
   <div class="case">
@@ -70,12 +70,18 @@
     <button onclick="checkAnswer(this, false)">Mesometrio</button>
     <button onclick="checkAnswer(this, false)">Mesovario</button>
   </div>
-
+  
+<div class="case">
+    <p><strong>Caso 4:</strong>  5.	Durante un examen ginecológico se detecta una alteración en el canal que comunica el útero con la vagina. ¿Qué estructura está comprometida?</p>
+    <button onclick="checkAnswer(this, true)">Cervix</button>
+    <button onclick="checkAnswer(this, false)">Trompa</button>
+    <button onclick="checkAnswer(this, false)">Ligamento</button>
+  </div>
   <button id="finish-button" onclick="window.location.href='felicitaciones.html'">Finalizar Juego</button>
 
   <script>
     let correctCount = 0;
-    const totalCases = 3;
+    const totalCases = 4;
 
     function checkAnswer(button, isCorrect) {
       if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
