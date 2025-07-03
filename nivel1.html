@@ -99,6 +99,10 @@
 
   <!-- BOTÓN OCULTO DE SIGUIENTE NIVEL -->
   <button id="nextLevelBtn" onclick="goNextLevel()">Siguiente Nivel</button>
+  
+  <audio id="soundCorrect" src="correcto.mp3"></audio>
+  <audio id="soundWrong" src="incorrecto.mp3"></audio>
+  <audio id="soundNext" src="siguiente nivel.mp3"></audio>
 
   <script>
     let totalQuestions = 5;
@@ -118,6 +122,26 @@
         setTimeout(() => {
           window.location.href = 'final-intento.html';
         }, 800);
+         if (isCorrect) {
+    correctAnswers++;
+    btn.classList.add('correct');
+    document.getElementById('soundCorrect').play(); // 🔊 correcto
+  } else {
+    btn.classList.add('incorrect');
+    document.getElementById('soundWrong').play(); // 🔊 incorrecto
+    setTimeout(() => {
+      window.location.href = 'final-intento.html';
+    }, 800);
+  }
+
+  const buttons = parent.querySelectorAll('button');
+  buttons.forEach(b => b.disabled = true);
+
+  if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
+    const nextBtn = document.getElementById('nextLevelBtn');
+    nextBtn.disabled = false;
+    nextBtn.classList.add('enabled');
+    document.getElementById('soundNext').play(); // 🔊 nivel completado
       }
 
       // Deshabilitar todos los botones de esta pregunta
@@ -135,6 +159,7 @@
     function goNextLevel() {
       if (!document.getElementById('nextLevelBtn').disabled) {
         window.location.href = 'nivel2.html';
+
       }
     }
   </script>
