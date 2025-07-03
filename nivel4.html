@@ -43,6 +43,11 @@
       margin-top: 20px;
       background-color: #c2185b;
       color: white;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
     }
   </style>
 </head>
@@ -74,14 +79,20 @@
     <button onclick="checkAnswer(this, false)">Ligamento inguinal</button>
   </div>
   
-<div class="case">
+  <div class="case">
     <p><strong>Caso 4:</strong> Durante un examen ginecológico se detecta una alteración en el canal que comunica el útero con la vagina. ¿Qué estructura está comprometida?</p>
      <img src="cervix2.png" alt="Cervix 2" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
     <button onclick="checkAnswer(this, true)">Cervix</button>
     <button onclick="checkAnswer(this, false)">Trompa</button>
     <button onclick="checkAnswer(this, false)">Ligamento</button>
   </div>
+
   <button id="finish-button" onclick="window.location.href='felicitaciones.html'">Finalizar Juego</button>
+
+  <!-- Sonidos -->
+  <audio id="soundCorrect" src="correcto.mp3"></audio>
+  <audio id="soundWrong" src="incorrecto.mp3"></audio>
+  <audio id="soundFinish" src="siguiente-nivel.mp3"></audio>
 
   <script>
     let correctCount = 0;
@@ -95,11 +106,16 @@
       if (isCorrect) {
         button.classList.add('correct');
         correctCount++;
+        document.getElementById('soundCorrect').play();
+
         if (correctCount === totalCases) {
-          document.getElementById('finish-button').style.display = 'inline-block';
+          const finishBtn = document.getElementById('finish-button');
+          finishBtn.style.display = 'inline-block';
+          document.getElementById('soundFinish').play();
         }
       } else {
         button.classList.add('incorrect');
+        document.getElementById('soundWrong').play();
         setTimeout(() => window.location.href = 'final-intento.html', 1000);
       }
     }
