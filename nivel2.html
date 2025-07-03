@@ -38,11 +38,26 @@
       background-color: #ef5350 !important;
       color: white;
     }
-    #next-level {
+    #nextLevelBtn.disabled {
       display: none;
-      margin-top: 20px;
+    }
+    #nextLevelBtn.enabled {
+      display: inline-block;
       background-color: #f57c00;
       color: white;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    #abandonBtn {
+      background-color: #d32f2f;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 10px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -53,15 +68,15 @@
 
   <div class="question">
     <p><strong>1. ¿Qué ligamento sostiene el útero en su posición en la pelvis?</strong></p>
-    <img src="ligamento-redondo.png" alt="Ligamento redondo" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="ligamento-redondo.png" alt="Ligamento redondo" style="width: 50%; margin: auto; display: block;">
     <button onclick="checkAnswer(this, true)">Ligamento redondo</button>
     <button onclick="checkAnswer(this, false)">Ligamento inguinal</button>
     <button onclick="checkAnswer(this, false)">Ligamento suspensorio</button>
   </div>
 
   <div class="question">
-    <p><strong>2. ¿Qué parte del útero es mas suceptible a cambios cíclicos?</strong></p>
-    <img src="endometrio.png" alt="Endometrio" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <p><strong>2. ¿Qué parte del útero es más susceptible a cambios cíclicos?</strong></p>
+    <img src="endometrio.png" alt="Endometrio" style="width: 50%; margin: auto; display: block;">
     <button onclick="checkAnswer(this, true)">Endometrio</button>
     <button onclick="checkAnswer(this, false)">Trompa uterina</button>
     <button onclick="checkAnswer(this, false)">Miometrio</button>
@@ -69,7 +84,7 @@
 
   <div class="question">
     <p><strong>3. ¿Qué capa uterina se desprende durante la menstruación?</strong></p>
-    <img src="endometrio2.png" alt="Endometrio 2" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="endometrio2.png" alt="Endometrio 2" style="width: 50%; margin: auto; display: block;">
     <button onclick="checkAnswer(this, false)">Perimetrio</button>
     <button onclick="checkAnswer(this, false)">Miometrio</button>
     <button onclick="checkAnswer(this, true)">Endometrio</button>
@@ -77,7 +92,7 @@
 
   <div class="question">
     <p><strong>4. ¿Cómo se denomina la unión entre el cuerpo del útero y el cuello?</strong></p>
-    <img src="istmo.png" alt="Endometrio" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="istmo.png" alt="Istmo" style="width: 50%; margin: auto; display: block;">
     <button onclick="checkAnswer(this, true)">Istmo</button>
     <button onclick="checkAnswer(this, false)">Fondo</button>
     <button onclick="checkAnswer(this, false)">Trompa</button>
@@ -85,14 +100,19 @@
 
   <div class="question">
     <p><strong>5. ¿Cuál es la porción superior del útero?</strong></p>
-    <img src="fondo.png" alt="Endometrio" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="fondo.png" alt="Fondo" style="width: 50%; margin: auto; display: block;">
     <button onclick="checkAnswer(this, true)">Fondo</button>
     <button onclick="checkAnswer(this, false)">Cuello</button>
-    <button onclick="checkAnswer(this, false)">Itsmo</button>
+    <button onclick="checkAnswer(this, false)">Istmo</button>
   </div>
 
-  <button id="nextLevelBtn" disabled onclick="goNextLevel()">Siguiente Nivel</button>
+  <button id="nextLevelBtn" class="disabled" onclick="goNextLevel()">Siguiente Nivel</button>
   <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
+
+  <!-- AUDIOS -->
+  <audio id="soundCorrect" src="correcto.mp3"></audio>
+  <audio id="soundWrong" src="incorrecto.mp3"></audio>
+  <audio id="soundNext" src="siguiente-nivel.mp3"></audio>
 
   <script>
     let totalQuestions = 5;
@@ -105,30 +125,37 @@
       parent.setAttribute('answered', 'true');
       answeredQuestions++;
 
+      const buttons = parent.querySelectorAll('button');
+      buttons.forEach(b => b.disabled = true);
+
       if (isCorrect) {
         correctAnswers++;
         btn.classList.add('correct');
+        document.getElementById('soundCorrect').play();
       } else {
         btn.classList.add('incorrect');
+        document.getElementById('soundWrong').play();
         setTimeout(() => {
           window.location.href = 'final-intento.html';
         }, 800);
       }
 
-      const buttons = parent.querySelectorAll('button');
-      buttons.forEach(b => b.disabled = true);
-
       if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
         const nextBtn = document.getElementById('nextLevelBtn');
-        nextBtn.disabled = false;
+        nextBtn.classList.remove('disabled');
         nextBtn.classList.add('enabled');
+        document.getElementById('soundNext').play();
       }
     }
 
     function goNextLevel() {
-      if (!document.getElementById('nextLevelBtn').disabled) {
+      if (!document.getElementById('nextLevelBtn').classList.contains('disabled')) {
         window.location.href = 'nivel3.html';
       }
+    }
+
+    function abandonGame() {
+      window.location.href = 'final-intento.html';
     }
   </script>
 </body>
