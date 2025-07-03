@@ -39,5 +39,18 @@
   <h1>🏆¡Felicitaciones!🎉</h1>
   <p>Has completado con éxito el juego del útero y su anatomía.</p>
   <button onclick="location.href='index.html'">Volver al Menú Principal</button>
+
+  <!-- Audio que se reproduce automáticamente -->
+  <audio id="congratsSound" src="felicitaciones.mp3" autoplay></audio>
+
+  <script>
+    // Algunos navegadores bloquean el autoplay, por eso reproducimos al primer click si es necesario
+    window.addEventListener('click', () => {
+      const audio = document.getElementById('congratsSound');
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+  </script>
 </body>
 </html>
