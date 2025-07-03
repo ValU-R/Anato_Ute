@@ -53,13 +53,13 @@
   </style>
 </head>
 <body>
-  <h1>Nivel 1️⃣: Anatomía Básica del Útero📍 </h1>
+  <h1>Nivel 1️⃣: Anatomía Básica del Útero📍</h1>
   <p>Selecciona la respuesta correcta para cada pregunta:</p>
 
-  <!-- PREGUNTAS -->
+  <!-- Preguntas con imágenes -->
   <div class="question">
     <p>1. ¿Qué parte del útero conecta con la vagina?</p>
-    <img src="cervix1.png" alt="Cervix 1" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="cervix1.png" style="width: 50%; display: block; margin: auto;">
     <button onclick="checkAnswer(this, false)">Endometrio</button>
     <button onclick="checkAnswer(this, true)">Cervix</button>
     <button onclick="checkAnswer(this, false)">Miometrio</button>
@@ -67,7 +67,7 @@
 
   <div class="question">
     <p>2. ¿Cómo se llama la capa más interna del útero?</p>
-    <img src="P2n1.png" alt="P2n1" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="P2n1.png" style="width: 50%; display: block; margin: auto;">
     <button onclick="checkAnswer(this, false)">Perimetrio</button>
     <button onclick="checkAnswer(this, true)">Endometrio</button>
     <button onclick="checkAnswer(this, false)">Miometrio</button>
@@ -75,7 +75,7 @@
 
   <div class="question">
     <p>3. ¿Qué estructura conecta el útero con los ovarios?</p>
-    <img src="tubauterina.png" alt="Tuba Uterina" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="tubauterina.png" style="width: 50%; display: block; margin: auto;">
     <button onclick="checkAnswer(this, true)">Tubas uterinas</button>
     <button onclick="checkAnswer(this, false)">Ligamento ancho</button>
     <button onclick="checkAnswer(this, false)">Cérvix</button>
@@ -83,7 +83,7 @@
 
   <div class="question">
     <p>4. ¿Cuál es la capa muscular del útero?</p>
-    <img src="miometrio.png" alt="Miometrio" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="miometrio.png" style="width: 50%; display: block; margin: auto;">
     <button onclick="checkAnswer(this, false)">Endometrio</button>
     <button onclick="checkAnswer(this, true)">Miometrio</button>
     <button onclick="checkAnswer(this, false)">Perimetrio</button>
@@ -91,15 +91,16 @@
 
   <div class="question">
     <p>5. ¿Qué forma tiene el útero en una mujer adulta sana?</p>
-    <img src="pera.png" alt="Pera" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+    <img src="pera.png" style="width: 50%; display: block; margin: auto;">
     <button onclick="checkAnswer(this, false)">Ovalada</button>
     <button onclick="checkAnswer(this, false)">Redonda</button>
     <button onclick="checkAnswer(this, true)">Pera</button>
   </div>
 
-  <!-- BOTÓN OCULTO DE SIGUIENTE NIVEL -->
+  <!-- Botón siguiente nivel -->
   <button id="nextLevelBtn" onclick="goNextLevel()">Siguiente Nivel</button>
-  
+
+  <!-- Sonidos -->
   <audio id="soundCorrect" src="correcto.mp3"></audio>
   <audio id="soundWrong" src="incorrecto.mp3"></audio>
   <audio id="soundNext" src="siguiente nivel.mp3"></audio>
@@ -110,57 +111,39 @@
     let answeredQuestions = 0;
 
     function checkAnswer(btn, isCorrect) {
-      if (btn.parentElement.getAttribute('answered')) return;
+      const parent = btn.parentElement;
+      if (parent.getAttribute('answered')) return;
       answeredQuestions++;
-      btn.parentElement.setAttribute('answered', 'true');
+      parent.setAttribute('answered', 'true');
 
       if (isCorrect) {
         correctAnswers++;
         btn.classList.add('correct');
+        document.getElementById('soundCorrect').play();
       } else {
         btn.classList.add('incorrect');
+        document.getElementById('soundWrong').play();
         setTimeout(() => {
           window.location.href = 'final-intento.html';
         }, 800);
-         if (isCorrect) {
-    correctAnswers++;
-    btn.classList.add('correct');
-    document.getElementById('soundCorrect').play(); // 🔊 correcto
-  } else {
-    btn.classList.add('incorrect');
-    document.getElementById('soundWrong').play(); // 🔊 incorrecto
-    setTimeout(() => {
-      window.location.href = 'final-intento.html';
-    }, 800);
-  }
-
-  const buttons = parent.querySelectorAll('button');
-  buttons.forEach(b => b.disabled = true);
-
-  if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
-    const nextBtn = document.getElementById('nextLevelBtn');
-    nextBtn.disabled = false;
-    nextBtn.classList.add('enabled');
-    document.getElementById('soundNext').play(); // 🔊 nivel completado
+        return; // Detener aquí si falló
       }
 
       // Deshabilitar todos los botones de esta pregunta
-      const buttons = btn.parentElement.querySelectorAll('button');
+      const buttons = parent.querySelectorAll('button');
       buttons.forEach(b => b.disabled = true);
 
-      // Mostrar botón de siguiente nivel si todas son correctas
+      // Mostrar botón si todas están bien
       if (answeredQuestions === totalQuestions && correctAnswers === totalQuestions) {
         const nextBtn = document.getElementById('nextLevelBtn');
-        nextBtn.disabled = false;
         nextBtn.classList.add('enabled');
+        nextBtn.style.display = 'inline-block';
+        document.getElementById('soundNext').play();
       }
     }
 
     function goNextLevel() {
-      if (!document.getElementById('nextLevelBtn').disabled) {
-        window.location.href = 'nivel2.html';
-
-      }
+      window.location.href = 'nivel2.html';
     }
   </script>
 </body>
