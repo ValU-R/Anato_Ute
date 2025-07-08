@@ -72,15 +72,7 @@
   </div>
 
   <div class="case">
-    <p><strong>Caso 3:</strong> Una paciente presenta dolor en el cuadrante inferior derecho y un útero desviado. Se sospecha de un defecto en la fijación uterina. ¿Qué ligamento puede estar comprometido?</p>
-     <img src="redondo.png" alt="redondo" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
-    <button onclick="checkAnswer(this, true)">Ligamento redondo</button>
-    <button onclick="checkAnswer(this, false)">Ligamento suspensorio</button>
-    <button onclick="checkAnswer(this, false)">Ligamento inguinal</button>
-  </div>
-  
-  <div class="case">
-    <p><strong>Caso 4:</strong> Durante un examen ginecológico se detecta una alteración en el canal que comunica el útero con la vagina. ¿Qué estructura está comprometida?</p>
+    <p><strong>Caso 3:</strong> Durante un examen ginecológico se detecta una alteración en el canal que comunica el útero con la vagina. ¿Qué estructura está comprometida?</p>
      <img src="cervix2.png" alt="Cervix 2" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
     <button onclick="checkAnswer(this, true)">Cervix</button>
     <button onclick="checkAnswer(this, false)">Trompa</button>
@@ -96,7 +88,7 @@
 
   <script>
     let correctCount = 0;
-    const totalCases = 4;
+    const totalCases = 3;
 
     function checkAnswer(button, isCorrect) {
       if (button.classList.contains('correct') || button.classList.contains('incorrect')) return;
