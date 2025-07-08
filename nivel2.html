@@ -98,13 +98,6 @@
     <button onclick="checkAnswer(this, false)">Trompa</button>
   </div>
 
-  <div class="question">
-    <p><strong>5. ¿Cuál es la porción superior del útero?</strong></p>
-    <img src="fondo.png" alt="Fondo" style="width: 50%; margin: auto; display: block;">
-    <button onclick="checkAnswer(this, true)">Fondo</button>
-    <button onclick="checkAnswer(this, false)">Cuello</button>
-    <button onclick="checkAnswer(this, false)">Istmo</button>
-  </div>
 
   <button id="nextLevelBtn" class="disabled" onclick="goNextLevel()">Siguiente Nivel</button>
   <button id="abandonBtn" onclick="abandonGame()">Abandonar Juego</button>
@@ -115,7 +108,7 @@
   <audio id="soundNext" src="siguiente-nivel.mp3"></audio>
 
   <script>
-    let totalQuestions = 5;
+    let totalQuestions = 4;
     let correctAnswers = 0;
     let answeredQuestions = 0;
 
